@@ -1,6 +1,6 @@
 let tiles = [],
-  mf = 1, //multiplying factor (value between 1 and 2)
-  bombDensity = 0.2,
+  mf = 1.5, //multiplying factor (value between 1 and 2)
+  bombDensity = 0.3, //Value between 0 and 1
   rows = 8 * mf,
   cols = 8 * mf,
   height = 400 * mf,

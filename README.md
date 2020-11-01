@@ -1,2 +1,2 @@
 # MineSweeper
-Minesweeper made with p5.js
+Minesweeper clone made using p5.js

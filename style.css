@@ -1,11 +1,10 @@
 html, body {
-  margin: 0;
+  margin: 10;
   padding: 0;
+  background-color: black;
 }
 canvas {
+  max-width: 500;
+  margin: auto;
   display: block;
-}
-
-body {
-  background-color: black;
 }

@@ -26,10 +26,6 @@ function dispTile(y, x) {
     rect(x * tWidth, y * tHeight, tWidth, tHeight);
     if (tiles[y][x].flag) {
       noStroke();
-      // fill(255, 64, 64);
-      // triangle(x * tWidth + 10, y * tHeight + 15,
-      //   (x + 1) * tWidth - 10, y * tHeight + 15,
-      //   (x + 0.5) * tWidth, (y + 1) * tHeight - 10);
       fill(252, 245, 3);
       text('⚠', (x + 0.5) * tWidth, (y + 0.65) * tHeight);
     }
