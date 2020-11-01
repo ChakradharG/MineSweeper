@@ -33,7 +33,6 @@ function configTiles() {
           tiles[y][x].neighCnt = '';
         }
       }
-      dispTile(y, x);
     }
   }
 }
@@ -43,7 +42,6 @@ function reveal(y, x) {
     return;
   }
   tiles[y][x].revealed = true;
-  dispTile(y, x);
   if (tiles[y][x].neighCnt === '💣') {
     //If a bomb is clicked on, reveal all bombs and end the game
     gameOver = true;
@@ -51,7 +49,6 @@ function reveal(y, x) {
       for (let j = 0; j < cols; j++) {
         if (tiles[i][j].neighCnt === '💣') {
           tiles[i][j].revealed = true;
-          dispTile(i, j);
         }
       }
     }

@@ -1,47 +1,63 @@
 function pixToTile() {
   //Converts the coordinates of the cursor into the index of the tile clicked
-  if (mouseY > height || gameOver) {
+  if (mouseY >= height || gameOver) {
     return;
   }
-  y = parseInt(mouseY / (height / rows));
-  x = parseInt(mouseX / (width / cols));
+  y = parseInt(mouseY / tHeight);
+  x = parseInt(mouseX / tWidth);
   if (mouseButton === LEFT) {
     reveal(y, x);
   } else if (mouseButton === RIGHT) {
     tiles[y][x].flag = !tiles[y][x].flag;
-    dispTile(y, x);
   }
 }
 
 function dispTile(y, x) {
   //Renders the tiles onto the screen, depending upon their state
+  stroke(100);
   if (tiles[y][x].revealed) {
-    stroke(125);
-    (tiles[y][x].flag && tiles[y][x].bomb) ? fill(94, 242, 19): fill(255);
-    rect(x * width / cols, y * height / rows, width / cols, height / rows);
+    (tiles[y][x].flag && tiles[y][x].bomb) ? fill(100, 224, 89): fill(130);
+    rect(x * tWidth, y * tHeight, tWidth, tHeight);
     noStroke();
     fill(0);
-    text(tiles[y][x].neighCnt, (x + 0.5) * width / cols, (y + 0.6) * height / rows);
+    text(tiles[y][x].neighCnt, (x + 0.5) * tWidth, (y + 0.65) * tHeight);
   } else {
-    stroke(125);
-    fill(55);
-    rect(x * width / cols, y * height / rows, width / cols, height / rows);
+    fill(50);
+    rect(x * tWidth, y * tHeight, tWidth, tHeight);
     if (tiles[y][x].flag) {
-      fill(255, 64, 64);
       noStroke();
-      triangle(x * width / cols + 10, y * height / rows + 15,
-        (x + 1) * width / cols - 10, y * height / rows + 15,
-        (x + 0.5) * width / cols, (y + 1) * height / rows - 10);
+      // fill(255, 64, 64);
+      // triangle(x * tWidth + 10, y * tHeight + 15,
+      //   (x + 1) * tWidth - 10, y * tHeight + 15,
+      //   (x + 0.5) * tWidth, (y + 1) * tHeight - 10);
+      fill(252, 245, 3);
+      text('⚠', (x + 0.5) * tWidth, (y + 0.65) * tHeight);
+    }
+  }
+}
+
+function highlight() {
+  //Highlights all the neighbours of the tile pointed by the cursor
+  if (mouseY >= height || mouseX >= width) {
+    return;
+  }
+  y = parseInt(mouseY / tHeight);
+  x = parseInt(mouseX / tWidth);
+  noFill();
+  stroke(0, 200, 200);
+  for (let i = max(0, y - 1); i < min(rows, y + 2); i++) {
+    for (let j = max(0, x - 1); j < min(cols, x + 2); j++) {
+      rect(j * tWidth, i * tHeight, tWidth, tHeight);
     }
   }
 }
 
 function endScreen(res) {
-  textSize(30);
-  fill(255);
-  if (res) {
-    text('Victory!', width / 2, height + 50);
-  } else {
-    text('Defeat!', width / 2, height + 50);
-  }
+  //Displays the result of the game
+  fill(0);
+  noStroke();
+  rect(0, height, width, 50);
+  fill(200);
+  s = res ? 'Victory!' : 'Defeat!';
+  text(s, width / 2, height + 40);
 }
