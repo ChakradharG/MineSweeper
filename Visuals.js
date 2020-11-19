@@ -1,3 +1,16 @@
+function initValues() {
+  mf = sliderMF.value;
+  bombDensity = sliderBD.value;
+  rows = 8 * mf,
+  cols = 8 * mf,
+  height = 400 * mf,
+  width = 400 * mf,
+  tHeight = height / rows,
+  tWidth = width / cols,
+  safeTiles = rows * cols,
+  gameOver = false;
+}
+
 function pixToTile() {
   //Converts the coordinates of the cursor into the index of the tile clicked
   if (mouseY >= height || gameOver) {
@@ -34,7 +47,7 @@ function dispTile(y, x) {
 
 function highlight() {
   //Highlights all the neighbours of the tile pointed by the cursor
-  if (mouseY >= height || mouseX >= width) {
+  if (mouseY < 0 || mouseY >= height || mouseX < 0 || mouseX >= width) {
     return;
   }
   y = parseInt(mouseY / tHeight);
@@ -50,10 +63,7 @@ function highlight() {
 
 function endScreen(res) {
   //Displays the result of the game
-  fill(0);
-  noStroke();
-  rect(0, height, width, 50);
-  fill(200);
-  s = res ? 'Victory!' : 'Defeat!';
-  text(s, width / 2, height + 40);
+  let ele = document.getElementById('endScreen');
+  ele.style.color = '#C8C8C8';
+  ele.innerHTML = res ? 'Victory!' : 'Defeat!';
 }

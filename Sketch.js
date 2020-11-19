@@ -1,17 +1,20 @@
 let tiles = [],
-  mf = 1.5, //multiplying factor (value between 1 and 2)
-  bombDensity = 0.3, //Value between 0 and 1
-  rows = 8 * mf,
-  cols = 8 * mf,
-  height = 400 * mf,
-  width = 400 * mf,
-  tHeight = height / rows,
-  tWidth = width / cols,
-  safeTiles = rows * cols,
-  gameOver = false;
+  mf, //multiplying factor
+  bombDensity,
+  sliderMF = document.getElementById("sliderMF"),
+  sliderBD = document.getElementById("sliderBD"),
+  rows,
+  cols,
+  height,
+  width,
+  tHeight,
+  tWidth,
+  safeTiles,
+  gameOver;
 
 function setup() {
-  cnv = createCanvas(width, height + 50);
+  initValues();
+  cnv = createCanvas(width, height);
   cnv.mousePressed(pixToTile);
   textAlign(CENTER);
   textSize(22);
@@ -23,6 +26,18 @@ function setup() {
   configTiles();
 }
 
+sliderMF.oninput = function() {
+  if (!gameOver) {
+    setup();
+  }
+}
+
+sliderBD.oninput = function() {
+  if (!gameOver) {
+    setup();
+  }
+}
+
 function draw() {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
@@ -31,6 +46,7 @@ function draw() {
   }
   if (gameOver) {
     noLoop();
+    // setup();
   } else {
     highlight();
   }
