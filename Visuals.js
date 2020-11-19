@@ -63,7 +63,10 @@ function highlight() {
 
 function endScreen(res) {
   //Displays the result of the game
-  let ele = document.getElementById('endScreen');
-  ele.style.color = '#C8C8C8';
-  ele.innerHTML = res ? 'Victory!' : 'Defeat!';
+  let ele1 = document.getElementById('endScreen1');
+  ele1.style.color = '#C8C8C8';
+  ele1.innerHTML = `${res ? 'Victory' : 'Defeat'}!`;
+  let ele2 = document.getElementById('endScreen2');
+  ele2.style.color = '#C8C8C8';
+  ele2.innerHTML = 'Press R to play again';
 }

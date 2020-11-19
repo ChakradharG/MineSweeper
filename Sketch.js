@@ -38,16 +38,25 @@ sliderBD.oninput = function() {
   }
 }
 
+function keyPressed() {
+  if (keyCode === 82) {
+    let ele1 = document.getElementById('endScreen1');
+    ele1.style.color = '#000000';
+    ele1.innerHTML = '...';
+    let ele2 = document.getElementById('endScreen2');
+    ele2.style.color = '#000000';
+    ele2.innerHTML = '...';
+    setup();
+  }
+}
+
 function draw() {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       dispTile(y, x);
     }
   }
-  if (gameOver) {
-    noLoop();
-    // setup();
-  } else {
+  if (!gameOver) {
     highlight();
   }
 }
