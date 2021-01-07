@@ -11,7 +11,7 @@ A clone of the popular game Minesweeper with adjustable board size and mine dens
 
 ## How to Use
 * Run ```index.html```
-* Change the Board size and Bomb Density if required
+* Change the board size and bomb density if required
 * Left click on a tile to reveal it
 * Right click on a tile to flag it
 * Hover over a tile to highlight its neighbours
