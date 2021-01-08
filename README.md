@@ -1,5 +1,5 @@
 # MineSweeper
-A clone of the popular game Minesweeper with adjustable board size and mine density made using p5.js
+A clone of the popular game Minesweeper with adjustable board size and mine density made using p5js.
 
 <br>
 
