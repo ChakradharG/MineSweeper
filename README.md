@@ -5,6 +5,7 @@ A clone of the popular game Minesweeper with adjustable board size and mine dens
 
 ## Getting Started
 * Clone this repository
+* ```cd MineSweeper```
 * Run ```index.html```
 
 <br>
